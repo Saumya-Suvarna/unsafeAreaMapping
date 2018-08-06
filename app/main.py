@@ -63,8 +63,6 @@ def index():
 
 @app.route("/queryByDate", methods=['GET','POST'])
 def queryByDate():
-    #startDate='03-07-2018'
-    #endDate='04-07-2018'
     if request.method == "POST":
         startDate = request.form["startDate"]
         endDate = request.form["endDate"]
@@ -79,10 +77,7 @@ def queryByDate():
         index = [0]
         data2 = pd.DataFrame(document, index=index)
         df= df.append(data2, ignore_index=True)
-
-    #print (df)
     df.columns = df.columns.map(lambda x: x.split(".")[-1])
-    #print (df)
     df['time_datetime']= pd.to_datetime(df['time'])
     df['time']=df['time_datetime'].dt.tz_localize('UTC').dt.tz_convert('Asia/Hong_Kong')
     df['day'] = df['time'].dt.weekday_name
@@ -94,12 +89,8 @@ def queryByDate():
     polygons_city = generate_polygon_city(provinces_json)
     df['location_city'] = df.apply(lambda row: get_location_city(row['longitude'], row['latitude'],polygons_city), axis=1)    #df = pd.read_csv('full_data.csv')
     cols_to_keep = ['longitude','deviceid','latitude','time','day', 'hour','location_state','alarmType','location_city']
-    #cols_to_keep = ['longitude', 'latitude', 'deviceCode', 'location']
     df_clean = df[cols_to_keep].dropna()
-    #    cols_to_keep2 = ['timestamp', 'day', 'hour', 'alarmType']
-    #    df_clean2 = df[cols_to_keep2].dropna()
     df_clean.to_csv('full_data_new.csv')
-    #print(df_clean)
     return df_clean.to_json(orient='records')
 
 if __name__ == "__main__":
