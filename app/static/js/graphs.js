@@ -83,7 +83,7 @@ function makeGraphs(error, recordsJson) {
         .dimension(alarmTypeSegmentDim)
 		.group(alarmTypeSegmentGroup)
 		.ordering(function(d) { return -d.value })
-        .colors(['#0071c5'])
+        .colors(['#993399'])
         .elasticX(true)
         .labelOffsetY(10)
         .xAxis().ticks(4);
@@ -94,7 +94,7 @@ function makeGraphs(error, recordsJson) {
         .dimension(dayDim)
         .group(dayGroup)
         .ordering(function(d) { return -d.value })
-        .colors(['#0071c5'])
+        .colors(['#993399'])
         .elasticX(true)
 		.xAxis().ticks(4);
 	
@@ -104,7 +104,7 @@ function makeGraphs(error, recordsJson) {
         .dimension(hourDim)
         .group(hourGroup)
         .ordering(function(d) { return -d.value })
-        .colors(['#0071c5'])
+        .colors(['#993399'])
         .elasticX(true)
 		.xAxis().ticks(4);
 
@@ -114,7 +114,7 @@ function makeGraphs(error, recordsJson) {
         .dimension(deviceidDim)
         .group(deviceidGroup)
         .ordering(function(d) { return -d.value })
-        .colors(['#0071c5'])
+        .colors(['#993399'])
         .elasticX(true)
         .xAxis().ticks(4);
 
@@ -124,7 +124,7 @@ function makeGraphs(error, recordsJson) {
         .dimension(location_stateDim)
         .group(location_stateGroup)
         .ordering(function(d) { return -d.value })
-        .colors(['#0071c5'])
+        .colors(['#993399'])
         .elasticX(true)
         .labelOffsetY(10)
         .xAxis().ticks(4);
@@ -135,7 +135,7 @@ function makeGraphs(error, recordsJson) {
         .dimension(location_cityDim)
         .group(location_cityGroup)
         .ordering(function(d) { return -d.value })
-        .colors(['#0071c5'])
+        .colors(['#993399'])
         .elasticX(true)
         .labelOffsetY(10)
 		.xAxis().ticks(4);
