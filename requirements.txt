@@ -1,0 +1,9 @@
+requests==2.9.1
+python-dateutil==2.7.3
+pytz==2018.5
+six==1.11.0
+numpy==1.15.0
+pandas
+Shapely==1.6.4.post2
+pymongo==3.7.1
+
