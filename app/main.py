@@ -66,9 +66,9 @@ def queryByDate():
     if request.method == "POST":
         startDate = request.form["startDate"]
         endDate = request.form["endDate"]
-    client = MongoClient("mongodb://mashrin:sIuOB86DN3t0A3nZmNnIYE0pfyrdSVW5UewH3qI4kJfZBv6t3RNd9BhQG9F2vMpi4H44fSXu5DjmEC4ySe6hVw==@mashrin.documents.azure.com:10255/?ssl=true&replicaSet=globaldb") #host uri
+    client = MongoClient("connectionstring") #host uri
     db = client.database_spektro    #Select the database
-    db.authenticate(name="mashrin",password='sIuOB86DN3t0A3nZmNnIYE0pfyrdSVW5UewH3qI4kJfZBv6t3RNd9BhQG9F2vMpi4H44fSXu5DjmEC4ySe6hVw==')
+    db.authenticate(name="name",password='password')
     df = pd.DataFrame(columns=['longitude','deviceid','_id','latitude','time','alarmType'])
 
     collection = db.simulator
