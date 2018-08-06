@@ -1,3 +1,0 @@
-Delete BBMP.json
-Download: https://github.com/geohacker/india/blob/master/district/india_district.geojson
-(Remove file name from inda_district.geojson to india.json)
