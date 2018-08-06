@@ -17,7 +17,6 @@ function makeGraphs(error, recordsJson) {
 		var dateDim = ndx.dimension(function(d) { return d["timestamp"]; });
 		var dayDim = ndx.dimension(function(d) { return d["day"]; });
 		var hourDim = ndx.dimension(function(d) { return d["hour"]; });
-		//var cityIdDim = ndx.dimension(function(d) { return d["cityId"]; });
 		var alarmTypeSegmentDim = ndx.dimension(function(d) { return d["alarmType"]; });
 		var deviceidDim = ndx.dimension(function(d) { return d["deviceid"]; });
 		var location_stateDim = ndx.dimension(function(d) { return d["location_state"]; });
@@ -28,7 +27,6 @@ function makeGraphs(error, recordsJson) {
 		var numRecordsByDate = dateDim.group();
 		var dayGroup = dayDim.group();
 		var hourGroup = hourDim.group();
-		//var cityIdGroup = cityIdDim.group();
 		var alarmTypeSegmentGroup = alarmTypeSegmentDim.group();
 		var deviceidGroup = deviceidDim.group();
 		var location_stateGroup = location_stateDim.group();
@@ -39,11 +37,9 @@ function makeGraphs(error, recordsJson) {
 		var minDate = dateDim.bottom(1)[0]["timestamp"];
 		var maxDate = dateDim.top(1)[0]["timestamp"];
 	
-	    var numberRecordsND = dc.numberDisplay("#number-records-nd");
-		//var timeChart = dc.barChart("#time-chart");
+		var numberRecordsND = dc.numberDisplay("#number-records-nd");
 		var hourChart = dc.rowChart("#hour-row-chart");
 		var dayChart = dc.rowChart("#day-row-chart");
-		//var cityIdChart = dc.rowChart("#cityId-row-chart");
 		var alarmTypeSegmentChart = dc.rowChart("#alarmType-segment-row-chart");
 		var deviceidChart = dc.rowChart("#deviceid-row-chart");
 		var location_stateChart = dc.rowChart("#location-state-row-chart");
@@ -51,38 +47,16 @@ function makeGraphs(error, recordsJson) {
 
 	
 	numberRecordsND
-		.formatNumber(d3.format("d"))
-		.valueAccessor(function(d){return d; })
-		.group(all);
-
-	// timeChart
-	// 	.width(550)
-	// 	.height(100)
-	// 	.margins({top: 10, right: 50, bottom: 20, left: 20})
-	// 	.dimension(dateDim)
-	// 	.group(numRecordsByDate)
-	// 	.transitionDuration(100)
-	// 	.x(d3.time.scale().domain([minDate, maxDate]))
-	// 	.y(0,20)
-	// 	.elasticY(true)
-	// 	.yAxis().ticks(4);
-		
-	// cityIdChart
-    //     .width(300)
-    //     .height(100)
-    //     .dimension(cityIdDim)
-    //     .group(cityIdGroup)
-    //     .ordering(function(d) { return -d.value })
-    //     .colors(['#0071c5'])
-    //     .elasticX(true)
-    //     .xAxis().ticks(4);
+	.formatNumber(d3.format("d"))
+	.valueAccessor(function(d){return d; })
+	.group(all);
 
 	alarmTypeSegmentChart
-		.width(250)
-		.height(150)
+	.width(250)
+	.height(150)
         .dimension(alarmTypeSegmentDim)
-		.group(alarmTypeSegmentGroup)
-		.ordering(function(d) { return -d.value })
+	.group(alarmTypeSegmentGroup)
+	.ordering(function(d) { return -d.value })
         .colors(['#993399'])
         .elasticX(true)
         .labelOffsetY(10)
@@ -96,7 +70,7 @@ function makeGraphs(error, recordsJson) {
         .ordering(function(d) { return -d.value })
         .colors(['#993399'])
         .elasticX(true)
-		.xAxis().ticks(4);
+	.xAxis().ticks(4);
 	
 	hourChart
         .width(250)
@@ -106,11 +80,11 @@ function makeGraphs(error, recordsJson) {
         .ordering(function(d) { return -d.value })
         .colors(['#993399'])
         .elasticX(true)
-		.xAxis().ticks(4);
+	.xAxis().ticks(4);
 
 	deviceidChart
-		.width(250)
-		.height(210)
+	.width(250)
+	.height(210)
         .dimension(deviceidDim)
         .group(deviceidGroup)
         .ordering(function(d) { return -d.value })
@@ -120,7 +94,7 @@ function makeGraphs(error, recordsJson) {
 
     location_stateChart
     	.width(200)
-		.height(700)
+	.height(700)
         .dimension(location_stateDim)
         .group(location_stateGroup)
         .ordering(function(d) { return -d.value })
@@ -131,7 +105,7 @@ function makeGraphs(error, recordsJson) {
 
 	location_cityChart
     	.width(200)
-		.height(700)
+	.height(700)
         .dimension(location_cityDim)
         .group(location_cityGroup)
         .ordering(function(d) { return -d.value })
